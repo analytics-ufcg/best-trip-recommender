@@ -87,7 +87,9 @@ After the feature extraction in the _Feature Factory_ module the data already co
 
 ### Starting API
 
-> python run\_api.py <num\_processes (< 15)> <method: lasso|svm> <best\_trip\_recommender\_folderpath> <training\_data\_filepath> <test\_metadata\_filepath> <model\_data\_filepath>
+```bash
+python run\_api.py <num\_processes (< 15)> <method: lasso|svm> <best\_trip\_recommender\_folderpath> <training\_data\_filepath> <test\_metadata\_filepath> <model\_data\_filepath>
+```
 
 Where:
  - num\_processes: Number of instances of the API (each instance is in a different process).
