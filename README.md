@@ -94,9 +94,9 @@ Where:
  - method: The forecasting algorithm used on the training step.
  - best\_trip\_recommender\_folderpath: Directory path of the scripts.
  - training\_data\_filepath: Directory path that contains the training data (This file must be named as "prediction_data.csv"). 
-  - ![](best_trip_recommender/data/prediction_data.csv)
+  - [Prediction Data Sample](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/prediction_data.csv)
  - test\_metadata\_filepath: Directory path that contains the timetable data used to select the trips to be predicted (This file must be named as "schedule.csv").
-  - ![](best_trip_recommender/data/schedule.csv)
+  - [Timetable Datar Sample](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/schedule.csv)
  - model\_data\_filepath: Directory path that contains the model used in the predictions (This file must be named as "models.rda"). 
-  - ![](best_trip_recommender/data/models.rda)
+  - [Trained Model Sample](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/models.rda)
 
