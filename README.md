@@ -102,3 +102,15 @@ Where:
  - model\_data\_filepath: Directory path that contains the model used in the predictions (This file must be named as "models.rda"). 
   - [Trained Model Sample](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/models.rda)
 
+### API Usage
+
+* Training Model Endpoint:
+```
+localhost:12345/train_model
+```
+
+* Get Recommendations Endpoint:
+```
+localhost:12345/get_best_trips?route=507&time=17:00:00&date=01-09-2016&bus_stop_id=29887
+```
+
