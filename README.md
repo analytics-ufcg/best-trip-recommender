@@ -88,11 +88,11 @@ After the feature extraction in the _Feature Factory_ module the data already co
 ### Starting API
 
 ```bash
-python run_api.py <num_processes (< 15)> <method: lasso|svm> <best_trip_recommender_folderpath> <training_data_filepath> <test_metadata_filepath> <model_data_filepath>
+python run_api.py <num_processes> <method: lasso|svm> <best_trip_recommender_folderpath> <training_data_filepath> <test_metadata_filepath> <model_data_filepath>
 ```
 
 Where:
- - num\_processes: Number of instances of the API (each instance is in a different process).
+ - num\_processes: Number of instances (less than 15) of the API (each instance is in a different process).
  - method: The forecasting algorithm used on the training step.
  - best\_trip\_recommender\_folderpath: Directory path of the scripts.
  - training\_data\_filepath: Directory path that contains the training data (This file must be named as "prediction_data.csv"). 
