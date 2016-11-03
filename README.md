@@ -98,19 +98,22 @@ Where:
  - training\_data\_filepath: Directory path that contains the training data (This file must be named as "prediction_data.csv"). 
   - [Prediction Data Sample](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/prediction_data.csv)
  - test\_metadata\_filepath: Directory path that contains the timetable data used to select the trips to be predicted (This file must be named as "schedule.csv").
-  - [Timetable Datar Sample](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/schedule.csv)
+  - [Timetable Data Sample](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/schedule.csv)
  - model\_data\_filepath: Directory path that contains the model used in the predictions (This file must be named as "models.rda"). 
   - [Trained Model Sample](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/models.rda)
 
 ### API Usage
 
 * Training Model Endpoint:
+
 ```
 localhost:12345/train_model
 ```
 
 * Get Recommendations Endpoint:
+
 ```
 localhost:12345/get_best_trips?route=507&time=17:00:00&date=01-09-2016&bus_stop_id=29887
 ```
 
+- Note: The route must pass in the bus_stop_id in the date specified. This information should be in the [Timetable Data](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/prediction_data.csv)
