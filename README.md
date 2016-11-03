@@ -82,3 +82,21 @@ After the feature extraction in the _Feature Factory_ module the data already co
     * time.difference: difference in seconds between the timetable and the central timetable.
     * passengers.number: predicted number of passengers of the trip.
     * trip.duration: predicted duration of the trip.
+
+# How to use
+
+### Starting API
+
+> python run\_api.py <num\_processes (< 15)> <method: lasso|svm> <best\_trip\_recommender\_folderpath> <training\_data\_filepath> <test\_metadata\_filepath> <model\_data\_filepath>
+
+Where:
+ - num\_processes: Number of instances of the API (each instance is in a different process).
+ - method: The forecasting algorithm used on the training step.
+ - best\_trip\_recommender\_folderpath: Directory path of the scripts.
+ - training\_data\_filepath: Directory path that contains the training data (This file must be named as "prediction_data.csv"). 
+  - ![](best_trip_recommender/data/prediction_data.csv)
+ - test\_metadata\_filepath: Directory path that contains the timetable data used to select the trips to be predicted (This file must be named as "schedule.csv").
+  - ![](best_trip_recommender/data/schedule.csv)
+ - model\_data\_filepath: Directory path that contains the model used in the predictions (This file must be named as "models.rda"). 
+  - ![](best_trip_recommender/data/models.rda)
+
