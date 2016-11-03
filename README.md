@@ -88,7 +88,7 @@ After the feature extraction in the _Feature Factory_ module the data already co
 ### Starting API
 
 ```bash
-python run\_api.py <num\_processes (< 15)> <method: lasso|svm> <best\_trip\_recommender\_folderpath> <training\_data\_filepath> <test\_metadata\_filepath> <model\_data\_filepath>
+python run_api.py <num_processes (< 15)> <method: lasso|svm> <best_trip_recommender_folderpath> <training_data_filepath> <test_metadata_filepath> <model_data_filepath>
 ```
 
 Where:
