@@ -1,0 +1,9 @@
+    version: '2'
+    services:
+        best_trip_api:
+            image: 150.165.85.4:5000/best_trip_recommender
+            ports:
+             - "$SOURCE_PORT:8080"
+            volumes:
+             - $HOST_VOLUME_FOLDERPATH:$CONTAINER_VOLUME_FOLDERPATH
+            command: python /home/best_trip_recommender_code/run_api.py $NUM_PROCESSES $PREDICTION_METHOD /home/best_trip_recommender_code/ $TRAINING_DATA_FOLDERPATH $TESTING_METADATA_FOLDERPATH $MODEL_FOLDERPATH 
