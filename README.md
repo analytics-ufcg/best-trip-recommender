@@ -113,7 +113,7 @@ localhost:12345/train_model
 * Get Recommendations Endpoint:
 
 ```
-localhost:12345/get_best_trips?route=507&time=17:00:00&date=01-09-2016&bus_stop_id=29887
+localhost:12345/get_best_trips?route=507&time=17:00:00&date=2016-09-01&bus_stop_id=29887
 ```
 
 - Note: The route must pass in the bus_stop_id in the date specified. This information should be in the [Timetable Data](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/prediction_data.csv)

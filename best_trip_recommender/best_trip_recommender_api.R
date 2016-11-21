@@ -4,23 +4,31 @@ source(paste0(api.folder.path, "/feature_factory.R"))
 source(paste0(api.folder.path, "/IO_service.R"))
 
 #* @get /get_best_trips
-get_best_trips <- function(route, time, date, bus_stop_id){
+get_best_trips <- function(route, time, date, bus_stop_id, closest_trip_type = "next_hour"){
   get.prediction.data(file = paste0(training.data.folderpath, "/prediction_data.csv"), time.window = months(3))
   get.trips.schedule()
   check.last.passengers.model.update()
   
-  n.closest.trips <- getProbableClosestTrips(route, time, date, bus_stop_id)
+  switch(
+   closest_trip_type,
+   "next_hour" = {
+     n.closest.trips <- getNextHourTrips(trips.schedule, route, time, date, bus_stop_id)
+   }, 
+   {
+     n.closest.trips <- getProbableClosestTrips(trips.schedule, route, time, date, bus_stop_id)
+   }
+  )
   
   if(nrow(n.closest.trips) == 0) {
     return("Rota não encontrada neste dia da semana ou nesta parada")
   }
   
   n.closest.trips <- user.feature.extractor(n.closest.trips, date)
-  
+
   n.closest.trips <- get.prediction.passengers.number(n.closest.trips, training.method = prediction.method)
-  
+
   n.closest.trips <- get.prediction.trip.duration(n.closest.trips, training.method = prediction.method)
-  
+
   return(n.closest.trips)
 }
 

@@ -49,6 +49,8 @@ get.current.prediction.data <- function(file = paste0(training.data.folderpath, 
   
   limit.date <- max(temp$date) %m-% time.window
   
+  temp$route <- as.factor(temp$route)
+  
   temp <- temp %>% 
     filter(date > limit.date)
   
@@ -66,8 +68,6 @@ get.trips.schedule <- function(file = paste0(test.metadata.folderpath, "/schedul
 getTripsSchedule <- function(file) {
   data <- read.csv(file)
   
-  data$rota <- as.character(data$rota)
-  
   data <- data %>%
     dplyr::rename(
       route = rota,
@@ -83,7 +83,7 @@ getTripsSchedule <- function(file) {
   data <- closest.trip.feature.extractor(data) %>%
     dplyr::select(-previous.timetable, -next.timetable)
   
-  write.csv(data,paste0(model.data.folderpath, "/trips.processed.schedules.csv"),row.names = FALSE)
+  write.csv(data,paste0(test.metadata.folderpath, "/trips.processed.schedules.csv"),row.names = FALSE)
   
   return(data)
 }

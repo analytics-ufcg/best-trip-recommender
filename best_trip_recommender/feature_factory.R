@@ -85,8 +85,8 @@ prediction.feature.extractor <- function(file) {
 user.feature.extractor <- function(n.probable.trips, date) {
   n.probable.trips <- n.probable.trips %>%
     dplyr::mutate(
-      date = date,
-      week.day = weekdays(as.Date(date, "%d-%m-%Y")),
+      date = as.Date(date),
+      week.day = weekdays(as.Date(date, "%Y-%m-%d")),
       difference.previous.timetable = as.integer((time.in.seconds - lag(time.in.seconds)) / 60),
       difference.next.timetable = as.integer((lead(time.in.seconds) - time.in.seconds) / 60),
       grouped.timetable = period_to_seconds(hms(grouped.timetable)),

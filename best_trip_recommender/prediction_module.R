@@ -35,6 +35,7 @@ get.prediction.passengers.number <- function(n.closest.trips, training.method) {
     }, finally = {
     })  
   } 
+  
   n.closest.trips$passengers.number <- predict.passengers.number(n.closest.trips)
   return(n.closest.trips)
 }
