@@ -1,7 +1,7 @@
     version: '2'
     services:
         best_trip_api:
-            image: 150.165.85.4:5000/best_trip_recommender
+            image: eubrabigsea/best_trip_recommender
             ports:
              - "$SOURCE_PORT:8080"
             volumes:
