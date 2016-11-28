@@ -107,13 +107,17 @@ Where:
 * Training Model Endpoint:
 
 ```
-localhost:12345/train_model
+localhost:<port>/train_model
 ```
 
 * Get Recommendations Endpoint:
 
 ```
-localhost:12345/get_best_trips?route=507&time=17:00:00&date=2016-09-01&bus_stop_id=29887
+# Curitiba example
+localhost:<port>/get_best_trips?route=507&time=17:00:00&date=2016-09-01&bus_stop_id=29887
+
+# Campina Grande example
+localhost:<port>/get_best_trips?route=0500&time=14:23:00&date=2016-09-01&bus_stop_id=97
 ```
 
 - Note: The route must pass in the bus_stop_id in the date specified. This information should be in the [Timetable Data](https://github.com/analytics-ufcg/best-trip-recommender/blob/master/best_trip_recommender/data/prediction_data.csv)
