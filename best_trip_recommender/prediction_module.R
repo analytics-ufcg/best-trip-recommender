@@ -15,6 +15,7 @@ train.passengers.number <- function(training.data, training.method) {
     form = total.passengers ~ route + date + week.day + day.type + grouped.timetable + difference.next.timetable + difference.previous.timetable,
     data = training.data,
     method = training.method,
+	na.action = na.omit,
     trControl = trainControl(method="cv",number=10)
   )
   return(passengers.number.model)
@@ -45,6 +46,7 @@ train.trip.duration <- function(training.data, training.method) {
     form = duration ~ route + date + week.day + day.type + grouped.timetable + difference.next.timetable + difference.previous.timetable,
     data = training.data,
     method = training.method,
+	na.action = na.omit,
     trControl = trainControl(method="cv",number=10)
   )
   return(trip.duration.model)
