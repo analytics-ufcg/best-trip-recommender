@@ -5,7 +5,7 @@ source(paste0(api.folder.path, "/IO_service.R"))
 
 #* @get /get_best_trips
 get_best_trips <- function(route, time, date, bus_stop_id, closest_trip_type = "next_hour"){
-  get.prediction.data(file = paste0(training.data.folderpath, "/prediction_data.csv"), time.window = months(3))
+  get.prediction.data(file = training.data.filepath, time.window = months(3))
   get.trips.schedule()
   check.last.passengers.model.update()
   
@@ -34,7 +34,7 @@ get_best_trips <- function(route, time, date, bus_stop_id, closest_trip_type = "
 
 #* @get /train_model
 train_model <<- function() {
-  get.current.prediction.data(file = paste0(training.data.folderpath, "/prediction_data.csv"), time.window = months(3))
+  get.current.prediction.data(file = training.data.filepath, time.window = months(3))
 
   trip.duration.model.temp <- train.trip.duration(prediction.data, training.method = prediction.method)
   passengers.number.model.temp <- train.passengers.number(prediction.data, training.method = prediction.method)

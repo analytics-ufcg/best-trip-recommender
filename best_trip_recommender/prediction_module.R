@@ -4,7 +4,7 @@ library(caret)
 
 check.last.passengers.model.update <- function() {
   get.last.time.updated.models()
-  if (file.info(paste0(model.data.folderpath, "/models.rda"))$mtime > last.time.updated.models) {
+  if (file.info(model.data.filepath)$mtime > last.time.updated.models) {
     load.models()
     get.last.time.updated.models(force = TRUE)
   }

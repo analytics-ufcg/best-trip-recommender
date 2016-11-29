@@ -7,20 +7,21 @@ hash.code <- function() {
 
 save.models <- function() {
   hash <- hash.code()
-  filename <- paste0(model.data.folderpath, "/models", hash, ".rda")
+  splitted.filename <- strsplit(model.data.filepath, "[.]")
+  filename <- paste0(splitted.filename[[1]][1:length(splitted.filename)], hash, ".", splitted.filename[[1]][-1])
   save(passengers.number.model, trip.duration.model, file = filename)
-  file.rename(from = filename, to = paste0(model.data.folderpath, "/models.rda"))
+  file.rename(from = filename, to = model.data.filepath)
 }
 
 load.models <- function() {
   loaded.models <- 
       tryCatch({
-        attach(paste0(model.data.folderpath, "/models.rda"))
-        load(paste0(model.data.folderpath, "/models.rda"))
+        attach(model.data.filepath)
+        load(model.data.filepath)
         ge <- globalenv()
         ge$passengers.number.model <- passengers.number.model
         ge$trip.duration.model <- trip.duration.model
-        #detach(paste0("file:", model.data.folderpath, "/models.rda"), unload = TRUE)
+        #detach(paste0("file:", model.data.filepath), unload = TRUE)
         print("Loaded modules correctly")
         return(TRUE)
       }, warning = function(war) {
@@ -34,17 +35,17 @@ load.models <- function() {
 
 get.last.time.updated.models <- function(force = FALSE) {
   if (!exists("last.time.updated.models") || is.null(last.time.updated.models) || force) {
-    last.time.updated.models <<- file.info(paste0(model.data.folderpath, "/models.rda"))$mtime
+    last.time.updated.models <<- file.info(model.data.filepath)$mtime
   }
 }
 
-get.prediction.data <- function(file = paste0(training.data.folderpath, "/prediction_data.csv"), time.window = weeks(1)) {
+get.prediction.data <- function(file = training.data.filepath, time.window = weeks(1)) {
   if(!exists("prediction.data") || is.null(prediction.data)) {
     get.current.prediction.data(file, time.window)
   }
 }
 
-get.current.prediction.data <- function(file = paste0(training.data.folderpath, "/prediction_data.csv"), time.window = weeks(1)) {
+get.current.prediction.data <- function(file = training.data.filepath, time.window = weeks(1)) {
   temp <- prediction.feature.extractor(file)
   
   limit.date <- max(temp$date) %m-% time.window
@@ -59,7 +60,7 @@ get.current.prediction.data <- function(file = paste0(training.data.folderpath, 
   prediction.data <<- temp
 }
 
-get.trips.schedule <- function(file = paste0(test.metadata.folderpath, "/schedule.csv")) {
+get.trips.schedule <- function(file = test.metadata.filepath) {
   if(!exists("trips.schedule") || is.null(trips.schedule)) {
     trips.schedule <<- getTripsSchedule(file)
   }
@@ -83,13 +84,11 @@ getTripsSchedule <- function(file) {
   data <- closest.trip.feature.extractor(data) %>%
     dplyr::select(-previous.timetable, -next.timetable)
   
-  write.csv(data,paste0(test.metadata.folderpath, "/trips.processed.schedules.csv"),row.names = FALSE)
-  
   return(data)
 }
 
 init.variables <- function() {
-  get.prediction.data(file = paste0(training.data.folderpath, "/prediction_data.csv"), time.window = months(3))
+  get.prediction.data(file = training.data.filepath, time.window = months(3))
   get.trips.schedule()
   get.last.time.updated.models()
 }

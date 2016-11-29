@@ -35,15 +35,15 @@ if not os.path.isdir(api_folderpath):
     print "Invalid api_folderpath!"
     exit(1)
 
-if not os.path.isdir(training_data_filepath):
+if not os.path.isfile(training_data_filepath):
     print "Invalid training_data_filepath!"
     exit(1)
 
-if not os.path.isdir(test_metadata_filepath):
+if not os.path.isfile(test_metadata_filepath):
     print "Invalid test_metadata_filepath!"
     exit(1)
 
-if not os.path.isdir(model_data_filepath):
+if not os.path.isfile(model_data_filepath):
     print "Invalid model_data_filepath!"
     exit(1)
 
