@@ -6,4 +6,4 @@
              - "$SOURCE_PORT:8080"
             volumes:
              - $HOST_VOLUME_FOLDERPATH:$CONTAINER_VOLUME_FOLDERPATH
-            command: sudo apt-get install git-all && git clone https://github.com/analytics-ufcg/best-trip-recommender.git /home/best-trip-recommender/ && mv /home/best-trip-recommender/best_trip_recommender /home/best_trip_recommender_code/ && python /home/best_trip_recommender_code/run_api.py $NUM_PROCESSES $PREDICTION_METHOD /home/best_trip_recommender_code/ $TRAINING_DATA_FILEPATH $TESTING_METADATA_FILEPATH $MODEL_FILEPATH 
+            command: python /home/best_trip_recommender_code/run_api.py $NUM_PROCESSES $PREDICTION_METHOD /home/best_trip_recommender_code/ $TRAINING_DATA_FILEPATH $TESTING_METADATA_FILEPATH $MODEL_FILEPATH
