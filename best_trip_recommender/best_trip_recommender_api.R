@@ -47,6 +47,11 @@ train_model <<- function() {
   return(TRUE)
 }
 
+#* @get /
+health_check <- function() {
+  return(TRUE)
+}
+
 init.variables()
 print("Loading modules...")
 loaded.models <- load.models()
