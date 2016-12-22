@@ -104,7 +104,9 @@ user.feature.extractor <- function(n.probable.trips, date) {
       difference.next.timetable,
       day.type,
       mean.timetable,
-      time.difference
+      time.difference,
+      previous.timetable,
+      next.timetable
     )
   
   n.probable.trips <- get.surrounding.trips(n.probable.trips)

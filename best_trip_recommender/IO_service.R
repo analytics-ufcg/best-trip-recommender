@@ -81,8 +81,7 @@ getTripsSchedule <- function(file) {
       trip.final.time = fim_viagem
     )
   
-  data <- closest.trip.feature.extractor(data) %>%
-    dplyr::select(-previous.timetable, -next.timetable)
+  data <- closest.trip.feature.extractor(data)
   
   return(data)
 }
