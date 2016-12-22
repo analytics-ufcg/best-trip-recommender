@@ -28,6 +28,12 @@ get_best_trips <- function(route, time, date, bus_stop_id, closest_trip_type = "
   n.closest.trips <- get.prediction.passengers.number(n.closest.trips, training.method = prediction.method)
 
   n.closest.trips <- get.prediction.trip.duration(n.closest.trips, training.method = prediction.method)
+  
+  n.closest.trips <- n.closest.trips %>%
+    mutate(
+      is.fastest.trip = (trip.duration == min(trip.duration)),
+      is.emptiest.trip = (passengers.number == min(passengers.number))
+    )
 
   return(n.closest.trips)
 }
