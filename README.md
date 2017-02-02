@@ -113,8 +113,9 @@ localhost:<port>/train_model
 * Get Recommendations Endpoint:
 
 ```
-# Curitiba example
-localhost:<port>/get_best_trips?route=507&time=17:00:00&date=2016-09-01&bus_stop_id=29887
+# Curitiba examples
+localhost:<port>/get_best_trips?route=022&time=10:00:00&date=2016-10-26&bus_stop_id=26276
+localhost:<port>/get_best_trips?route=507&time=17:00:00&date=2017-02-04&bus_stop_id=26255
 
 # Campina Grande example
 localhost:<port>/get_best_trips?route=0500&time=14:23:00&date=2016-09-01&bus_stop_id=97
